@@ -9,7 +9,7 @@ const Login = props => {
   } = useStore();
 
   useEffect(() => {
-    console.log(authentication.isDoneAuthenticating);
+    console.log("authentication.isDoneAuthenticating");
     if (authentication.isDoneAuthenticating) {
       this.props.history.push("/Welcome");
     }

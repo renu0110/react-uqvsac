@@ -5,7 +5,7 @@ export default class Login extends React.Component {
     super(props);
     this.state = {
       username: "",
-      success: ""
+      success: "false"
     };
   }
   handleSubmit = e => {
@@ -15,8 +15,11 @@ export default class Login extends React.Component {
         "https://jsonplaceholder.typicode.com/posts?userId=1"
       );
       const json = await response.json();
+      if(json){
+        this.setState({success : true});
+      }
     })();
-      this.props.history.push("./Welcome");
+     this.props.history.push("Welcome")
   };
   handleChange = e => {
     this.setState({ [e.target.name]: e.target.value });

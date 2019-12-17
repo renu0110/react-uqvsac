@@ -1,10 +1,10 @@
-import React from "react";
+import React, { useStore, useEffect } from "react";
 import { loadUserRole } from "./actions";
 import { useStore } from "./store";
 
 const Login = props => {
   const {
-    state: { authentication },
+    state,
     dispatch
   } = useStore();
 
@@ -15,7 +15,7 @@ const Login = props => {
     }
   });
 
-  handleSubmit = e => {
+  const handleSubmit = e => {
     e.preventDefault();
     (async function() {
       const response = await fetch(
@@ -29,7 +29,7 @@ const Login = props => {
     })();
     //this.props.history.push("Welcome");
   };
-  handleChange = e => {
+  const handleChange = e => {
     this.setState({ [e.target.name]: e.target.value });
   };
 

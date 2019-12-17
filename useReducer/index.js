@@ -1,4 +1,4 @@
-import {LoginandReducer} from "../LoginandReducer"
+import {LoginReducer} from "../LoginReducer"
 
 function reducer(state,action){
   return {

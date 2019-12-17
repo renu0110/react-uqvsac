@@ -1,5 +1,6 @@
 import React from "react";
-import { loadUserRole } from "../../actions";
+import { loadUserRole } from "./actions";
+import { useStore } from "./store";
 
 const Login = props => {
   const {
@@ -51,4 +52,4 @@ const Login = props => {
   );
 };
 
-export default Login
+export default Login;

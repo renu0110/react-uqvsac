@@ -1,6 +1,6 @@
 import React, { createContext, useMemo, useReducer } from "react";
 import { globalState } from "./initialState";
-import { reducer } from "../useReducer";
+import { reducer } from "./useReducer";
 
 const StoreContext = React.createContext;
 

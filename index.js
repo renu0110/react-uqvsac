@@ -1,23 +1,23 @@
-import React, { Component } from 'react';
-import { render } from 'react-dom';
+import React, { Component } from "react";
+import { render } from "react-dom";
 import Main from "./Main";
-import './style.css';
+import "./style.css";
 
 class App extends Component {
   constructor() {
     super();
     this.state = {
-      name: 'React'
+      name: "React"
     };
   }
 
   render() {
     return (
       <div>
-        <Main/>
+        <Main />
       </div>
     );
   }
 }
 
-render(<App />, document.getElementById('root'));
+render(<App />, document.getElementById("root"));

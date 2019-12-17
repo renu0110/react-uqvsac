@@ -1,13 +1,19 @@
 import React from "react";
+import { loadUserRole } from "../../actions";
 
-export default class Login extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      username: "",
-      success: "false"
-    };
-  }
+const Login = props => {
+  const {
+    state: { authentication },
+    dispatch
+  } = useStore();
+
+  useEffect(() => {
+    console.log(authentication.isDoneAuthenticating);
+    if (authentication.isDoneAuthenticating) {
+      this.props.history.push("/Welcome");
+    }
+  });
+
   handleSubmit = e => {
     e.preventDefault();
     (async function() {
@@ -15,32 +21,32 @@ export default class Login extends React.Component {
         "https://jsonplaceholder.typicode.com/posts?userId=1"
       );
       const json = await response.json();
-      if(json){
-        this.setState({success : true});
+      if (json) {
+        this.setState({ success: true });
       }
+      loadUserRole(dispatch, state);
     })();
-     this.props.history.push("Welcome")
+    //this.props.history.push("Welcome");
   };
   handleChange = e => {
     this.setState({ [e.target.name]: e.target.value });
   };
-  render() {
-    return (
-      <form onSubmit={this.handleSubmit}>
-        <input
-          type="text"
-          name="username"
-          placeholder="username"
-          onChange={this.handleChange}
-        />
-        <input
-          type="text"
-          name="password"
-          placeholder="password"
-          onChange={this.handleChange}
-        />
-        <button>Login</button>
-      </form>
-    );
-  }
-}
+
+  return (
+    <form onSubmit={this.handleSubmit}>
+      <input
+        type="text"
+        name="username"
+        placeholder="username"
+        onChange={this.handleChange}
+      />
+      <input
+        type="text"
+        name="password"
+        placeholder="password"
+        onChange={this.handleChange}
+      />
+      <button>Login</button>
+    </form>
+  );
+};

@@ -1,4 +1,4 @@
-import React, { createContext, useReducer } from "react";
+import React, { createContext, useMemo, useReducer } from "react";
 import { globalState } from "./initialState";
 import { reducer } from "../useReducer";
 
@@ -11,6 +11,7 @@ function useStore() {
 
 function StoreProvider(props) {
   const [state, dispatch] = useReducer(reducer, globalState);
+  const value = useMemo(() => ({ state, dispatch }), [state]);
   return <StoreContext.Provider value={value} {...props} />;
 }
 
